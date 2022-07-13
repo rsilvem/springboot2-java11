@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.educandoweb.course.entities.Category;
-import com.educandoweb.course.services.CategoryService;
+import com.educandoweb.course.entities.Product;
+import com.educandoweb.course.services.ProductService;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryResource {
+@RequestMapping(value = "/products")
+public class ProductResource {
 
 	@Autowired
-	private CategoryService service;
+	private ProductService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Category>> findAll() {
-		List<Category> cats = service.findAll();
-		return ResponseEntity.ok().body(cats);
+	public ResponseEntity<List<Product>> findAll() {
+		List<Product> products = service.findAll();
+		return ResponseEntity.ok().body(products);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Category> findById(@PathVariable Long id) {
-		Category obj = service.findById(id);
+	public ResponseEntity<Product> findById(@PathVariable Long id) {
+		Product obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }
